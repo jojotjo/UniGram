@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- custom css links -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- external css links -->
+    <!-- font awesome css link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- swiper slider link -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+  <body>
+
+
+    <!-- ......................nav bar start .................................................. -->
+    <nav>
+      <div class="container nav-container">
+        <div class="logo">
+          <h3><span>Uni</span> Gram</h3>
+        </div>
+        <div class="search-bar">
+          <i class="fa fa-search"></i>
+          <input type="search" placeholder="Search here..." id="" />
+        </div>
+        <div class="add-post">
+          <label for="add-post" class="btn btn-primary mini-button">Add Post</label>
+          <div class="profile-picture" id="my-profile-picture">
+            <img src="./images/person1.jpg" alt="" />
+          </div>
+        </div>
+      </div>
+    </nav>
+    <!-- ..............................nav bar end......................................................... -->
+    <!-- ................................main section start .......................................................... -->
+    <main>
+      <div class="container main-container">
+    
+    
+        <!-- ...........main left start................. -->
+
+
+        <div class="main-left">
+     
+     
+          <!-- .......profile start.........-->
+          <a class="profile">
+            <div class="profile-picture" id="my-profile-picture">
+              <img src="./images/person1.jpg" alt="" />
+            </div>
+            <div class="profile-handle">
+              <h4>John</h4>
+              <p class="text-gry">@thejohn</p>
+            </div>
+          </a>
+
+          <!-- .......profile end.........-->
+
+
+
+          <!--...............start aside bar...................... -->
+
+
+          <aside>
+            <a href="#" class="menu-item active">
+              <span>
+                <img src="./svg/house-door.svg" alt="" srcset="" />
+              </span>
+              <h3>Home</h3>
+            </a>
+
+
+            <a href="#" class="menu-item">
+              <span>
+                <img src="./svg/joystick.svg" alt="" srcset="" />
+              </span>
+              <h3>Explore</h3>
+            </a>
+
+
+            <a class="menu-item" id="Notify-box">
+              <span>
+                <img src="./svg/bell.svg" alt="" srcset="" />
+              </span>
+              <small class="notify-counter nt" id="ntCounter1">7+</small>
+              <h3>Notifications</h3>
+            </a>
+
+
+            <a href="#" class="menu-item" id="messageMenu">
+              <span>
+                <img src="./svg/chat-left-dots.svg" alt="" srcset="" />
+              </span>
+              <small class="notify-counter" id="notifycounter2">3+</small>
+              <h3>Message</h3>
+            </a>
+
+
+            <a href="#" class="menu-item">
+              <span>
+                <img src="./svg/bookmarks.svg" alt="" srcset="" />
+              </span>
+              <h3>Book Marks</h3>
+            </a>
+
+
+            <a href="#" class="menu-item" id="mess">
+              <span>
+                <img src="./svg/graph-up-arrow.svg" alt="" srcset="" />
+              </span>
+              <h3>Analytics</h3>
+            </a>
+
+
+            <a class="menu-item" id="theme">
+              <span>
+                <img src="./svg/palette.svg" alt="" srcset="" />
+              </span>
+              <h3>Theme</h3>
+            </a>
+
+
+            <a href="#" class="menu-item">
+              <span>
+                <img src="./svg/gear.svg" alt="" srcset="" />
+              </span>
+              <h3>Settings</h3>
+            </a>
+
+
+            <!-- ................add post btn ............-->
+            <label for="add-post" class="btn btn-primary btn-lg" id="create-lg"
+              >Create A Post</label
+            >
+          </aside>
+          
+          
+          <!--...............end aside bar...................... -->
+        </div>
+
+
+        <!-- ...........main left end................. -->
+
+
+
+        <!-- ...........main middle start................. -->
+
+
+        <div class="main-middle">
+          <div class="middle-container">
+        
+            <!-- ............................start stories...................................-->
+            
+            <div class="stories">
+              <div class="stories-wrapper swiper mySwiper">
+                <div class="swiper-wrapper">
+                  <div class="story swiper-slide">
+                    <img src="" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person1.jpg" alt="" srcset="" />
+                    </div>
+                    <label for="add-story" class="add-story">
+                      <i class="fa fa-add" id="upload"></i>
+                      <p>Add your <br /> story</p>
+                    </label>
+                    <input type="file" accept="image/jpeg,image/jpg,image/png" id="add-story">
+                  </div>
+
+                  <div class="story swiper-slide">
+                    <img src="./stories/story1.jpg" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person2.jpg" alt="" srcset="" />
+                    </div>
+                  </div>
+
+                  <div class="story swiper-slide">
+                    <img src="./stories/story6.jpg" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person3.jpg" alt="" srcset="" />
+                    </div>
+                  </div>
+
+                  <div class="story swiper-slide">
+                    <img src="./stories/story2.jpg" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person4.jpg" alt="" srcset="" />
+                    </div>
+                  </div>
+
+                  <div class="story swiper-slide">
+                    <img src="./stories/story5.jpg" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person5.jpg" alt="" srcset="" />
+                    </div>
+                  </div>
+
+                  <div class="story swiper-slide">
+                    <img src="./stories/story4.jpg" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person6.jpg" alt="" srcset="" />
+                    </div>
+                  </div>
+
+                  <div class="story swiper-slide">
+                    <img src="./stories/story3.jpg" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person7.jpg" alt="" srcset="" />
+                    </div>
+                    
+                  </div>
+
+                  <div class="story swiper-slide">
+                    <img src="./stories/story5.jpg" alt="" srcset="" />
+                    <div class="profile-picture" id="my-profile-picture">
+                      <img src="./images/person8.jpg" alt="" srcset="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ............................end stories...................................-->
+            
+            <!-- .......................post input............................. -->
+            
+            <form class="add-post input-post">
+              <div class="profile-picture" id="my-profile-picture">
+                <img src="./images/person1.jpg" alt="" />
+              </div>
+              <input
+                type="text"
+                placeholder="What's On Your Mind?"
+                id="add-post"
+              />
+
+              <input type="submit" value="post" class="btn btn-primary" />
+            </form>
+
+            <!-- .......................feed area start................ -->
+            <div class="feeds">
+              <div class="feed my-feed">
+                <!-- ......feed top.............. -->
+                <div class="feed-top">
+                  <div class="user">
+                    <div class="profile-picture">
+                      <img src="./images/person1.jpg" alt="" />
+                    </div>
+                    <div class="info">
+                      <h3>John</h3>
+                      <div class="time text-gry">
+                        <small>USA <span>2 Days Ago</span></small>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="edit">
+                    <img src="./svg/three-dots.svg" alt="" />
+                    <ul class="edit-menu">
+                      <li><i class="fa fa-pen"></i>Edit</li>
+                      <li><i class="fa fa-trash"></i>Delete</li>
+                    </ul>
+                  </span>
+                </div>
+
+                <!-- ............feed image...........-->
+                <div class="feed-img">
+                  <img src="./posts/post1.png" alt="" srcset="" />
+                </div>
+                <!-- ............feed action area ...........-->
+                <div class="action-button">
+                  <div class="interaction-button">
+                    <span><i class="fa fa-heart"></i></span>
+                    <span><i class="fa fa-comment-dots"></i></span>
+                    <span><i class="fa fa-link"></i></span>
+                  </div>
+                  <div class="bookmark">
+                    <i class="fa fa-bookmark bkmark"></i>
+                  </div>
+                </div>
+                <!-- .......liked by....... -->
+                <div  class="liked-by">
+                  <span><img src="./images/person12.jpg" alt="" /></span>
+                  <span ><img src="./images/person11.jpg" alt="" /></span>
+                  <span><img src="./images/person14.jpg" alt="" /></span>
+                  <p><b>Jhon Williams </b>and<b> 77 comments other</b></p>
+                </div>
+                
+                <!-- ................caption............................ -->
+                <div class="caption">
+                  <div class="title">
+                    <p>
+                      <b>John</b> 60 Project Ideas With Source Code.
+                      <span class="hars-tag">#lifestyle</span>
+                    </p>
+                  </div>
+                  
+                </div>
+                <!--..........commments.................. -->
+                <div class="comments text-gray">view all comments</div>
+              </div>
+              <div class="feed">
+                <!-- ......feed top.............. -->
+                <div class="feed-top">
+                  <div class="user">
+                    <div class="profile-picture">
+                      <img src="./images/person2.jpg" alt="" />
+                    </div>
+                    <div class="info">
+                      <h3>Rose</h3>
+                      <div class="time text-gry">
+                        <small>London <span>1 Day Agp</span></small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ............feed image...........-->
+                <div class="feed-img">
+                  <img src="./posts/post2.jpg" alt="" srcset="" />
+                </div>
+                <!-- ............feed action area ...........-->
+                <div class="action-button">
+                  <div class="interaction-button">
+                    <span><i class="fa fa-heart"></i></span>
+                    <span><i class="fa fa-comment-dots"></i></span>
+                    <span><i class="fa fa-link"></i></span>
+                  </div>
+                  <div class="bookmark">
+                    <i class="fa fa-bookmark bkmark"></i>
+                  </div>
+
+
+                 
+
+
+                  
+                </div>
+                <!-- .......liked by....... -->
+                <div class="liked-by">
+                  <span><img src="./images/person1.jpg" alt="" /></span>
+                  <span><img src="./images/person3.jpg" alt="" /></span>
+                  <span><img src="./images/person4.jpg" alt="" /></span>
+                  <p><b>Lisa </b>and<b> 72 comments other</b></p>
+                </div>
+                <!-- ................caption............................ -->
+                <div class="caption">
+                  <div class="title">
+                    <p>
+                      <b>Rose </b>0 Project Ideas With Source Code.
+                      <span class="hars-tag">#code</span>
+                    </p>
+                  </div>
+
+                </div>
+                <!--..........commments.................. -->
+                <div class="comments text-gray">view all comments</div>
+              </div>
+              <div class="feed">
+                <!-- ......feed top.............. -->
+                <div class="feed-top">
+                  <div class="user">
+                    <div class="profile-picture">
+                      <img src="./images/person3.jpg" alt="" />
+                    </div>
+                    <div class="info">
+                      <h3>Lisa</h3>
+                      <div class="time text-gry">
+                        <small>AUS <span>5 Day Agp</span></small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ............feed image...........-->
+                <div class="feed-img">
+                  <img src="./posts/post4.png" alt="" srcset="" />
+                </div>
+                <!-- ............feed action area ...........-->
+                <div class="action-button">
+                  <div class="interaction-button">
+                    <span><i class="fa fa-heart"></i></span>
+                    <span><i class="fa fa-comment-dots"></i></span>
+                    <span><i class="fa fa-link"></i></span>
+                  </div>
+                  <div class="bookmark">
+                    <i class="fa fa-bookmark bkmark"></i>
+                  </div>
+
+
+          
+
+
+                  
+                </div>
+                <!-- .......liked by....... -->
+                <div class="liked-by">
+                  <span><img src="./images/person1.jpg" alt="" /></span>
+                  <span><img src="./images/person3.jpg" alt="" /></span>
+                  <span><img src="./images/person4.jpg" alt="" /></span>
+                  <p><b>Rose </b>and<b> 90 comments other</b></p>
+                </div>
+                <!-- ................caption............................ -->
+                <div class="caption">
+                  <div class="title">
+                    <p>
+                      <b>Lisa </b>Top 15 php projects.
+                      <span class="hars-tag">#code #php</span>
+                    </p>
+                  </div>
+
+                </div>
+                <!--..........commments.................. -->
+                <div class="comments text-gray">view all comments</div>
+              </div>
+              <div class="feed">
+                <!-- ......feed top.............. -->
+                <div class="feed-top">
+                  <div class="user">
+                    <div class="profile-picture">
+                      <img src="./images/person1.jpg" alt="" />
+                    </div>
+                    <div class="info">
+                      <h3>John</h3>
+                      <div class="time text-gry">
+                        <small>Uk <span>5 minutes</span></small>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="edit">
+                    <img src="./svg/three-dots.svg" alt="" />
+                    <ul class="edit-menu">
+                      <li><i class="fa fa-pen"></i>Edit</li>
+                      <li><i class="fa fa-trash"></i>Delete</li>
+                    </ul>
+                  </span>
+                </div>
+
+                <!-- ............feed image...........-->
+                <div class="feed-img">
+                  <h4>Hello world , i m john.</h4>
+                  <!-- <img src="./images/person14.jpg" alt="" srcset="" /> -->
+                </div>
+                <!-- ............feed action area ...........-->
+                <div class="action-button">
+                  <div class="interaction-button">
+                    <span><i class="fa fa-heart"></i></span>
+                    <span><i class="fa fa-comment-dots"></i></span>
+                    <span><i class="fa fa-link"></i></span>
+                  </div>
+                  <div class="bookmark">
+                    <i class="fa fa-bookmark"></i>
+                  </div>
+                </div>
+                <!-- .......liked by....... -->
+                <div class="liked-by">
+                  <span><img src="./images/person11.jpg" alt="" /></span>
+                  <span><img src="./images/person11.jpg" alt="" /></span>
+                  <span><img src="./images/person11.jpg" alt="" /></span>
+                  <p><b>Jack </b>and<b> 50 comments other</b></p>
+                </div>
+                <!-- ................caption............................ -->
+                <div class="caption">
+                  <p>
+                    <b>John</b>
+                    <span class="hars-tag">#myself</span>
+                  </p>
+                </div>
+                <!--..........commments.................. -->
+                <div class="comments text-gray">view all comments</div>
+              </div>
+            </div>
+            <!-- ......................feed area end..................... -->
+          </div>
+        </div>
+
+        
+        <!-- ...........main middle end................. -->
+
+        <!-- ...........main right start................. -->
+        <div class="main-right">
+          <!-- start message -->
+
+          <div class="messages">
+            <div class="message-top">
+              <h4>Message</h4><i class="fa fa-edit"></i>
+            </div>
+            <!-- searchbar -->
+             <div class="message-search-bar">
+              <i class="fa fa-search"></i>
+              <input type="search" placeholder="Search message" id="message-search">
+             </div>
+             <!-- message categories -->
+              <div class="message-categories">
+                <h6 class="active">Primary</h6>
+                <h6>General</h6>
+                <h6 class="message-request">Request(2)</h6>
+              </div>
+              <!-- message -->
+               <!-- <div class="message">
+                <div class="./images/person12.jpgprofile-picture">
+                  <img src="./images/person12.jpg" alt="">
+                  <div class="green-active"></div>
+                </div>
+                <div class="message-body">
+                  <h5>Alexa Lisa</h5>
+                  <p class="text-gry">Lorem ipsum dolor sit amet.</p>
+                </div>
+               </div> -->
+
+               <div class="message">
+                <div class="profile-picture">
+                  <img src="./images/person3.jpg" alt="">
+                  <div class="green-active"></div>
+                </div>
+                <div class="message-body">
+                  <h5>Lisa</h5>
+                  <p class="text-gry">hello,how are you jhon?</p>
+                </div>
+               </div>
+
+               <div class="message">
+                <div class="profile-picture">
+                  <img src="./images/person12.jpg" alt="">
+                </div>
+                <div class="message-body">
+                  <h5>Raghav</h5>
+                  <p class="text-gry">All the Best for presentation</p>
+                </div>
+               </div>
+
+               
+               <div class="message">
+                <div class="profile-picture">
+                  <img src="./images/person2.jpg" alt="">
+                </div>
+                <div class="message-body">
+                  <h5>Rose</h5>
+                  <p class="text-gry">You can check the details here...</p>
+                </div>
+               </div>
+               <div class="message">
+                <div class="profile-picture">
+                  <img src="./images/person11.jpg" alt="">
+                </div>
+                <div class="message-body">
+                  <h5>Tripti</h5>
+                  <p class="text-gry">I am from India</p>
+                </div>
+               </div>
+          </div>
+
+          <!-- end message -->
+
+          <!-- start friend request -->
+           <div class="friend-request">
+            <h4>Request</h4>
+            <div class="request">
+              <div class="info">
+                <div class="profile-picture">
+                  <img src="./images/person12.jpg" alt="">
+                </div>
+                <h5>Mark Danele</h5>
+                <p class="text-gry">4 mutual friend</p>
+                <small class="text-gry alert">You have accepted friend request</small>
+              </div>
+              <div class="action">
+                <div class="btn btn-primary Accept">
+                  Accept
+                </div>
+                <div class="btn btn-danger Delete">
+                  Delete
+                </div>
+              </div>
+            </div>
+
+
+            <div class="request">
+              <div class="info">
+                <div class="profile-picture">
+                  <img src="./images/person9.jpg" alt="">
+                </div>
+                <h5>Alice</h5>
+                <p class="text-gry">1 mutual friend</p>
+                <small class="text-gry alert">You have accepted friend request</small>
+              </div>
+              <div class="action">
+                <div class="btn btn-primary Accept">
+                  Accept
+                </div>
+                <div class="btn btn-danger Delete">
+                  Delete
+                </div>
+              </div>
+            </div>
+
+
+            <div class="request">
+              <div class="info">
+                <div class="profile-picture">
+                  <img src="./images/person8.jpg" alt="">
+                </div>
+                <h5>Gorge</h5>
+                <p class="text-gry">7 mutual friend</p>
+                <small class="text-gry alert">You have accepted friend request</small>
+              </div>
+              <div class="action">
+                <div class="btn btn-primary" id="Accept">
+                  Accept
+                </div>
+                <div class="btn btn-danger" id="Delete">
+                  Delete
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            
+           </div>
+           <!-- end friend request  -->
+
+         
+        </div>
+        <!-- ...........main right end................. -->
+      </div>
+    </main>
+    <!-- ...............................main section end.................................................................... -->
+    <!-- ..................start popups area............................-->
+    <!--......................start profile popup.................  -->
+    <div class="popup profile-popup">
+      <div>
+        <div class="popup-box profile-popup-box">
+          <h1>Beg jOKER</h1>
+          <p>@john</p>
+          <div id="my-profile-picture">
+            <img src="./images/person1.jpg" alt="" srcset="" />
+          </div>
+
+          <label for="profile-upload" class="btn btn-primary btn-lg">update profile picture</label
+          >
+          <input
+            type="file"
+            accept="image/jpg,image/png,img/jpeg"
+            id="profile-upload"
+          />
+
+          <button class="btn btn-primary btn-lg">log out</button>
+        </div>
+        <span class="close"><i class="fa fa-close"></i></span>
+      </div>
+    </div>
+    <!-- ....................end profile popups ................................... -->
+    <!-- ...........start add post popup.................  -->
+    <div class="popup add-post-popup">
+      <div>
+        <form class="popup-box add-post-popup"  id="profileform">
+          <h1>Add new Post</h1>
+          <div class="row post-title">
+            <label for="add-post">Title</label>
+            <input type="text" placeholder="what's your on mind ?" id="add-post" />
+          </div>
+          <div class="row post-img">
+            <img src="" alt="" srcset="" id="postImg"/>
+            <label for="feed-pic-upload" class="feed-upload-button">
+              <span><i class="fa fa-add"> </i></span> upload a picture
+              </label>
+            <input
+              type="file"
+              accept="image/jpg,image/png,img/jpeg"
+              id="feed-pic-upload" />
+            <input type="submit" class="btn btn-primary btn-lg" value="Add Post" id="btn1"></input>
+          </div>
+        </form>
+        <span class="close"><i class="fa fa-close"></i></span>
+      </div>
+    </div>
+    <!-- ..............end add post popup................... -->
+    <!-- start theme customize popup -->
+     <div class="popup theme-customize">
+      <div>
+        <div class="popup-box theme-customize-popup-box">
+          <h1>customize your theme</h1>
+          <p>manage your font size,color,and background</p>
+          <!-- font size  -->
+           <div class="font-size">
+            <h4>font size</h4>
+            <div>
+              <div>
+                <h6>Aa</h6>
+              </div>
+              <div class="choose-size">
+                <span class="font-size-1 active"></span>
+                <span class="font-size-2"></span>
+                <span class="font-size-3"></span>
+                <span class="font-size-4"></span>
+                <span class="font-size-5"></span>
+              </div>
+            <div>
+            <h3>Aa</h3>
+            </div>
+           </div>
+          </div>
+           <!-- primary color -->
+            <div class="colors">
+              <h4>color</h4>
+              <div class="choose-color">
+                <span class="color-1 active"></span>
+                <span class="color-2 "></span>
+                <span class="color-3 "></span>
+                <span class="color-4 "></span>
+                <span class="color-5 "></span>          
+              </div>
+            </div>
+
+            <!-- background colors -->
+             <div class="background">
+              <h4>background</h4>
+              <div class="choose-bg">
+                <div class="bg1 active">
+                  <span></span>
+                  <h5>light</h5>
+                </div>
+                <div class="bg2">
+                  <span></span>
+                  <h5>dark</h5>
+                </div>
+              </div>
+             </div>
+        </div>
+        <span class="close"><i class="fa fa-close"></i></span>
+        
+      </div>
+     </div>
+     <!-- end theme customize popup  -->
+    <!-- swiper js links -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- custom js links -->
+    <script src="script.js"></script>
+  </body>
+</html>

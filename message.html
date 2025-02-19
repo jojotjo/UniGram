@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram Chatbox</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.1/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #121212;
+        color: #fff;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        background-color: #1e1e1e;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-bottom: 1px solid #333333;
+        padding: 10px 20px;
+      }
+
+      .header i {
+        position: absolute;
+        left: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        color: #e1306c;
+        transition: color 0.3s ease;
+      }
+
+      .header i:hover {
+        color: #f77737;
+      }
+
+      h2 {
+        margin: 0;
+        color: #fff;
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      .search-bar {
+        margin: 10px 20px;
+        display: flex;
+        align-items: center;
+        background-color: #2c2c2e;
+        border-radius: 25px;
+        padding: 10px;
+      }
+
+      .search-bar input {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        color: #fff;
+        flex-grow: 1;
+        padding-left: 10px;
+        font-size: 18px;
+      }
+
+      .section-titles {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+        border-bottom: 1px solid #333333;
+      }
+
+      .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        color: #e1306c;
+        transition: color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .chat-list {
+        flex-grow: 1;
+        padding: 10px 20px;
+        overflow-y: auto;
+      }
+
+      .chat-item {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: #252525;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+      }
+
+      .chat-item img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 2px solid #e1306c;
+      }
+
+      .chat-details {
+        flex-grow: 1;
+      }
+
+      .chat-title {
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 5px;
+        font-size: 16px;
+      }
+
+      .chat-message {
+        font-size: 14px;
+        color: #a8a8a8;
+      }
+
+      .chat-time {
+        font-size: 14px;
+        color: #a8a8a8;
+        margin-left: 10px;
+      }
+
+      .typing-indicator {
+        color: #a8a8a8;
+        font-size: 14px;
+        display: none;
+      }
+
+      .messages {
+        overflow-y: auto;
+        height: 300px;
+        background-color: #1e1e1e;
+        padding: 10px;
+        border-radius: 8px;
+        margin-bottom: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .message {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .message img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+
+      .message-input {
+        display: flex;
+        margin: 10px 20px;
+        padding: 10px;
+      }
+
+      .message-input input {
+        flex-grow: 1;
+        margin-right: 10px;
+        border: none;
+        border-radius: 25px;
+        padding: 10px;
+        background-color: #2c2c2e;
+        color: #fff;
+        font-size: 16px;
+      }
+
+      .message-input button {
+        background-color: #e1306c;
+        border: none;
+        border-radius: 25px;
+        padding: 10px 20px;
+        color: white;
+        transition: background-color 0.3s ease;
+      }
+
+      .message-input button:hover {
+        background-color: #f77737;
+      }
+
+      .group-message {
+        align-self: flex-start;
+        font-size: 18px;
+      }
+
+      .personal-message {
+        align-self: flex-end;
+        color: #e1306c;
+        font-size: 18px;
+      }
+
+      .request-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        background-color: #252525;
+        border-radius: 12px;
+        margin-bottom: 10px;
+        cursor: pointer;
+      }
+
+      .request-item img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+      }
+
+      .request-details {
+        flex-grow: 1;
+      }
+
+      .request-title {
+        font-weight: bold;
+        color: #fff;
+        margin-bottom: 5px;
+        font-size: 16px;
+      }
+
+      .request-message {
+        font-size: 14px;
+        color: #a8a8a8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="chat-list-container">
+      <div class="header">
+        <i class="fas fa-arrow-left" onclick="goBack()"></i>
+        <h2>prachigambhir</h2>
+      </div>
+
+      <div class="search-bar">
+        <i class="fas fa-search"></i>
+        <input id="search-input" type="text" placeholder="Search" />
+      </div>
+
+      <div class="section-titles">
+        <div class="section-title" id="messages-tab">Messages</div>
+        <div class="section-title" id="requests-tab" onclick="showRequests()">
+          Requests
+        </div>
+      </div>
+
+      <div class="chat-list" id="chat-list"></div>
+      <div class="typing-indicator" id="typing-indicator">
+        Someone is typing...
+      </div>
+    </div>
+
+    <div class="container" id="chat-view-container" style="display: none">
+      <div class="header">
+        <i class="fas fa-arrow-left" onclick="goBack()"></i>
+        <h2 id="chat-title">Chat</h2>
+      </div>
+
+      <div class="messages" id="messages"></div>
+
+      <div class="message-input">
+        <input type="text" id="message" placeholder="Type a message..." />
+        <button id="send">Send</button>
+      </div>
+    </div>
+
+    <div class="container" id="request-view-container" style="display: none">
+      <div class="header">
+        <i class="fas fa-arrow-left" onclick="goBack()"></i>
+        <h2>Requests</h2>
+      </div>
+
+      <div class="chat-list" id="request-list"></div>
+    </div>
+
+    <script>
+      const chats = [
+        {
+          title: "GET TOGETHER",
+          message: "You have a new message",
+          time: "2h",
+          img: "https://randomuser.me/api/portraits/men/1.jpg",
+          unread: 2,
+          isGroup: true,
+        },
+        {
+          title: "Khushi kd",
+          message: "Hey, what’s up?",
+          time: "3h",
+          img: "https://randomuser.me/api/portraits/women/2.jpg",
+          unread: 1,
+          isGroup: false,
+        },
+        {
+          title: "Daksh",
+          message: "Don’t forget the meeting",
+          time: "4h",
+          img: "https://randomuser.me/api/portraits/men/3.jpg",
+          unread: 0,
+          isGroup: false,
+        },
+        {
+          title: "Vrinda Sharma",
+          message: "Let's catch up!",
+          time: "5h",
+          img: "https://randomuser.me/api/portraits/women/4.jpg",
+          unread: 1,
+          isGroup: false,
+        },
+        {
+          title: "Manyaa",
+          message: "Sent you a meme",
+          time: "6h",
+          img: "https://randomuser.me/api/portraits/men/5.jpg",
+          unread: 0,
+          isGroup: false,
+        },
+        {
+          title: "Sam Atreja",
+          message: "New message from Sam",
+          time: "7h",
+          img: "https://randomuser.me/api/portraits/women/6.jpg",
+          unread: 1,
+          isGroup: false,
+        },
+      ];
+
+      const chatMessages = {
+        "GET TOGETHER": [
+          {
+            user: "Kartik",
+            message: "Check this video!",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+          {
+            user: "You",
+            message: "What do you think?",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+          {
+            user: "Kartik",
+            message: "It's amazing!",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+        ],
+        "Khushi kd": [
+          {
+            user: "Khushi",
+            message: "Hey, are you free?",
+            img: "https://randomuser.me/api/portraits/women/2.jpg",
+          },
+          {
+            user: "You",
+            message: "Yes, what's up?",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+          {
+            user: "Khushi",
+            message: "Let's meet later.",
+            img: "https://randomuser.me/api/portraits/women/2.jpg",
+          },
+        ],
+        Daksh: [
+          {
+            user: "Daksh",
+            message: "Did you complete the assignment?",
+            img: "https://randomuser.me/api/portraits/men/3.jpg",
+          },
+          {
+            user: "You",
+            message: "Almost done!",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+          {
+            user: "Daksh",
+            message: "Good!",
+            img: "https://randomuser.me/api/portraits/men/3.jpg",
+          },
+        ],
+        "Vrinda Sharma": [
+          {
+            user: "Vrinda",
+            message: "Have you seen my last post?",
+            img: "https://randomuser.me/api/portraits/women/4.jpg",
+          },
+          {
+            user: "You",
+            message: "Yes! It's great!",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+        ],
+        Manyaa: [
+          {
+            user: "Manyaa",
+            message: "Can't wait for the event!",
+            img: "https://randomuser.me/api/portraits/men/5.jpg",
+          },
+          {
+            user: "You",
+            message: "Me too!",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+        ],
+        "Sam Atreja": [
+          {
+            user: "Sam",
+            message: "How's your project going?",
+            img: "https://randomuser.me/api/portraits/women/6.jpg",
+          },
+          {
+            user: "You",
+            message: "It's going well, thanks!",
+            img: "https://randomuser.me/api/portraits/men/1.jpg",
+          },
+        ],
+      };
+
+      const requests = [
+        {
+          title: "Alex Doe",
+          message: "Wants to send you a message",
+          img: "https://randomuser.me/api/portraits/men/7.jpg",
+        },
+        {
+          title: "Sarah Smith",
+          message: "Wants to send you a message",
+          img: "https://randomuser.me/api/portraits/women/8.jpg",
+        },
+        {
+          title: "James Brown",
+          message: "Wants to send you a message",
+          img: "https://randomuser.me/api/portraits/men/9.jpg",
+        },
+      ];
+
+      const chatList = document.getElementById("chat-list");
+      const searchInput = document.getElementById("search-input");
+      const typingIndicator = document.getElementById("typing-indicator");
+      const requestList = document.getElementById("request-list");
+
+      function populateChats(chatArray) {
+        chatList.innerHTML = "";
+        chatArray.forEach((chat) => {
+          const unread =
+            chat.unread > 0
+              ? <span class="unread-counter">${chat.unread}</span>
+              : "";
+          const chatItem = `
+                    <div class="chat-item" onclick="openChat('${chat.title}')">
+                        <img src="${chat.img}" alt="Image">
+                        <div class="chat-details">
+                            <div class="chat-title">${chat.title} ${unread}</div>
+                            <div class="chat-message">${chat.message}</div>
+                        </div>
+                        <div class="chat-time">${chat.time}</div>
+                    </div>
+                `;
+          chatList.insertAdjacentHTML("beforeend", chatItem);
+        });
+      }
+
+      function populateRequests() {
+        requestList.innerHTML = "";
+        requests.forEach((request) => {
+          const requestItem = `
+                    <div class="request-item" onclick="openRequest('${request.title}')">
+                        <img src="${request.img}" alt="Image">
+                        <div class="request-details">
+                            <div class="request-title">${request.title}</div>
+                            <div class="request-message">${request.message}</div>
+                        </div>
+                    </div>
+                `;
+          requestList.insertAdjacentHTML("beforeend", requestItem);
+        });
+      }
+
+      populateChats(chats);
+
+      searchInput.addEventListener("input", function () {
+        const query = this.value.toLowerCase();
+        const filteredChats = chats.filter(
+          (chat) =>
+            chat.title.toLowerCase().includes(query) ||
+            chat.message.toLowerCase().includes(query)
+        );
+        populateChats(filteredChats);
+      });
+
+      function openChat(title) {
+        document.getElementById("chat-title").textContent = title;
+        document.getElementById("chat-list-container").style.display = "none";
+        document.getElementById("chat-view-container").style.display = "flex";
+        populateMessages(title);
+      }
+
+      function openRequest(title) {
+        alert(`You received a message request from ${title}`);
+      }
+
+      function goBack() {
+          document.getElementById('chat-list-container').style.display = 'flex';
+          document.getElementById('chat-view-container').style.display = 'none';
+          document.getElementById('request-view-container').style.display = 'none';
+      }
+
+      function showRequests() {
+          document.getElementById('chat-list-container').style.display = 'none';
+          document.getElementById('request-view-container').style.display = 'flex';
+          populateRequests();
+      }
+
+      function populateMessages(title) {
+          const messagesContainer = document.getElementById('messages');
+          messagesContainer.innerHTML = '';
+          chatMessages[title].forEach(msg => {
+              const messageItem = `
+                  <div class="message ${msg.user === 'You' ? 'personal-message' : 'group-message'}">
+                      <img src="${msg.img}" alt="User Image">
+                      <span>${msg.user}: ${msg.message}</span>
+                  </div>
+              `;
+              messagesContainer.insertAdjacentHTML('beforeend', messageItem);
+          });
+          messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      }
+
+      document.getElementById('send').addEventListener('click', function() {
+          const messageInput = document.getElementById('message');
+          const messageText = messageInput.value;
+          if (messageText) {
+              const messageItem = `
+                  <div class="message personal-message">
+                      <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="User Image">
+                      <span>You: ${messageText}</span>
+                  </div>
+              `;
+              const title = document.getElementById('chat-title').textContent;
+              const messagesContainer = document.getElementById('messages');
+              messagesContainer.insertAdjacentHTML('beforeend', messageItem);
+              messagesContainer.scrollTop = messagesContainer.scrollHeight;
+              messageInput.value = '';
+          }
+      });
+    </script>
+  </body>
+</html>

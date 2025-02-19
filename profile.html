@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+    background: #e9da91;
+    margin-top: 20px;
+    cursor:progress;
+}
+
+.ui-w-80 {
+    width : 85px !important;
+    height: auto;
+    border-radius: 10%;
+}
+
+label.btn {
+    margin-bottom: 0;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.text-light {
+    color: #babbbc !important;
+}
+
+.btn-facebook {
+    border-color: rgba(0, 0, 0, 0);
+    background  : #3B5998;
+    color       : #fff;
+}
+
+.btn-instagram {
+    border-color: rgba(0, 0, 0, 0);
+    background  : #000;
+    color       : #fff;
+}
+
+.card {
+    background-clip: padding-box;
+    box-shadow     : 0 1px 4px rgba(24, 28, 33, 0.012);
+}
+
+.row-bordered {
+    overflow: hidden;
+}
+
+.account-settings-fileinput {
+    position  : absolute;
+    visibility: hidden;
+    width     : 1px;
+    height    : 1px;
+    opacity   : 0;
+}
+
+.account-settings-links .list-group-item.active {
+    font-weight: bold !important;
+}
+
+html:not(.dark-style) .account-settings-links .list-group-item.active {
+    background: transparent !important;
+}
+
+.account-settings-multiselect~.select2-container {
+    width: 100% !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.material-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.material-style .account-settings-links .list-group-item.active {
+    color: #4e5155 !important;
+}
+
+.dark-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+.dark-style .account-settings-links .list-group-item.active {
+    color:  #1f080fdf !important;
+}
+
+.light-style .account-settings-links .list-group-item.active {
+    color: #4E5155 !important;
+}
+
+.light-style .account-settings-links .list-group-item {
+    padding     : 0.85rem 1.5rem;
+    border-color: rgba(24, 28, 33, 0.03) !important;
+}
+
+.abc{
+    border: 1px solid rgba(88, 83, 83, 0.066);
+    border-radius: 10%;
+    height: 35px;
+    font-size: bolder;
+}
+.abc:hover{
+    background: radial-gradient(at top left, rgb(72, 69, 66), rgb(175, 9, 109));
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #1f080fdf, #040404, #7f0f43);
+    color:antiquewhite; /* Light text */
+}
+
+.card.dark-mode {
+    background: linear-gradient(135deg, #1f080fdf, #040404, #7f0f43);
+    border-color: #040404; /* Dark border color */
+}
+    </style>
+</head>
+<body>
+    <div class="container light-style flex-grow-1 container-p-y">
+        <h4 class="font-weight-bold py-3 mb-4">
+            Account settings
+        </h4>
+        <div class="card overflow-hidden">
+            <div class="row no-gutters row-bordered row-border-light">
+                <div class="col-md-3 pt-0">
+                    <div class="list-group list-group-flush account-settings-links">
+                        <a class="list-group-item list-group-item-action active" data-toggle="list"
+                            href="#account-general">General</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-change-password">Change password</a>
+                        <a class="list-group-item list-group-item-action" data-toggle="list"
+                            href="#account-info">Info</a>
+                            <a class="list-group-item list-group-item-action" data-toggle="list" id="toggle-button"
+                            >Dark Mode</a>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active show" id="account-general">
+                            <div class="card-body media align-items-center">
+                                <img src="https://cdn4.sharechat.com/compressed_gm_40_img_712342_2212d3af_1688811709348_sc.jpg?tenant=sc&referrer=pwa-sharechat-service&f=348_sc.jpg"
+                                    alt="profile picture" class="d-block ui-w-80">
+                                <div class="media-body ml-4">
+                                    <label class="btn btn-outline-light rounded mr-4">
+                                        Upload new photo
+                                        <input type="file" class="account-settings-fileinput">
+                                    </label> &nbsp;
+                                </div>
+                            </div>
+                            <hr class="border-light m-0">
+                            <div class="card-body">
+                                <form onsubmit="validate_info(event)">
+                                    <div class="form-group">
+                                        <label class="form-label" for="username">Username</label>
+                                        <input type="text" class="form-control mb-1" value="richa_kakkar"
+                                            id="username" placeholder="Enter your username"><span id="usernameSpan"
+                                            style="color: red;"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="name">Name</label>
+                                        <input type="text" id="name" class="form-control" value="Richa"
+                                            placeholder="Enter your name"><span id="nameSpan"
+                                            style="color: red;"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="email">E-mail</label>
+                                        <input type="text" class="form-control mb-1"
+                                            value="richa1268.be23@chitkara.edu.in"
+                                            placeholder="Enter your univerity's email id" id="email"><span
+                                            id="emailSpan" style="color: red;"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="department">Department</label>
+                                        <input type="text" class="form-control" value="CUIET"
+                                            placeholder="Enter your department"><span id="departmentSpan"
+                                            style="color: red;"></span>
+                                    </div>
+
+                                    <div class="text-right mt-3">
+                                        <input type="submit" value="Save changes" class="abc">
+                                        <input type="button" value="Cancel" class="abc" onclick="reset_Form(event)">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="account-change-password">
+                        <form id="passwordform" onsubmit="validate_password(event)">
+                            <div class="card-body pb-2">
+                                <div>
+                                    <label class="form-label" for="oldpassword">Current password</label>
+                                    <input type="password" class="form-control" id="oldpassword"
+                                        placeholder="Enter your old password"><span id="oldPasswordSpan"
+                                        style="color: red;"></span>
+                                </div>
+                                <div>
+                                    <label class="form-label" for="newpassword">New password</label>
+                                    <input type="password" class="form-control" id="newpassword"
+                                        placeholder="Enter your new password"><span id="newPasswordSpan"
+                                        style="color: red;"></span>
+                                </div>
+                                <div>
+                                    <label class="form-label" for="confirmpassword">Repeat new password</label>
+                                    <input type="password" class="form-control" id="confirmpassword"
+                                        placeholder="Confirm your password"><span id="confirmPasswordSpan"
+                                        style="color: red;"></span>
+                                </div>
+
+                                <div class="text-right mt-3">
+                                    <input type="submit" value="Save changes" class="abc" >
+                                    <input type="button" value="Cancel" onclick="resetForm(event)" class="abc">
+                        </form>
+                    </div>
+                </div>
+                </form>
+            </div>
+            <div class="tab-pane fade" id="account-info">
+                <form  id="accountform">
+                    <div class="card-body pb-2">
+                        <div class="form-group">
+                            <label class="form-label">Bio</label>
+                            <textarea class="form-control" rows="5" id="bio">Ambitious Explorer, Empowered Vision!!</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Birthday</label>
+                            <input type="text" class="form-control" value="May 3, 1995"
+                                placeholder="Enter your birth date" id="birthday">
+                        </div>
+                    </div>
+                    <hr class="border-light m-0">
+                    <div class="card-body pb-2">
+                        <h6 class="mb-4">Contacts</h6>
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="text" class="form-control" value="+91 1234567890"
+                                placeholder="Enter your mobile no">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Website</label>
+                            <input type="text" class="form-control" value=""
+                                placeholder="Enter your website if you have any" id="phone">
+                        </div>
+                        <hr class="border-light m-0">
+                        <h6 class="mb-4 mt-3">Social Media</h6>
+                        <div class="form-group">
+                            <label class="form-label">Twitter</label>
+                            <input type="text" class="form-control" value="" placeholder="Enter your twitter id" id="twitter">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Google+</label>
+                            <input type="text" class="form-control" value=""
+                                placeholder="Enter your personal portfolio website" id="google">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">LinkedIn</label>
+                            <input type="text" class="form-control" value="" placeholder="Enter your linkedin id" id="linkedin">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Instagram</label>
+                            <input type="text" class="form-control" value="" placeholder="Enter your instagram id" id="instagram">
+                        </div>
+                        <div class="text-right mt-3">
+                            <input type="button" value="Save changes" class="abc">
+                            <input type="button" value="Cancel" class="abc" onclick="reset_Form(event)">
+                </form>
+            </div>
+            </form>
+        </div>
+
+    </div>  
+
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function validate_password(event) {
+        event.preventDefault();
+        let oldPassword = document.getElementById("oldpassword").value;
+        let newPassword = document.getElementById("newpassword").value;
+        let confirmPassword = document.getElementById("confirmpassword").value;
+
+        document.getElementById("oldPasswordSpan").innerHTML = "";
+        document.getElementById("newPasswordSpan").innerHTML = "";
+        document.getElementById("confirmPasswordSpan").innerHTML = "";
+
+        if (oldPassword == "") {
+            document.getElementById("oldPasswordSpan").innerHTML = "Old password is required.";
+            return false;
+        } else if (newPassword == "") {
+            document.getElementById("newPasswordSpan").innerHTML = "Password is required.";
+            return false;
+        } else if (newPassword.length < 8) {
+            document.getElementById("newPasswordSpan").innerHTML = "Password must be a minimum of 8 characters.";
+            return false;
+        } else if (oldPassword == newPassword) {
+            document.getElementById("newPasswordSpan").innerHTML = "You cannot enter the old password again.";
+            return false; 
+        } else if (newPassword != confirmPassword) {
+            document.getElementById("confirmPasswordSpan").innerHTML = "Passwords do not match.";
+            return false;  
+        } else {
+            alert("Form is submitted!!");
+            return true; 
+        }
+    }
+
+
+    function resetForm(event){
+        event.preventDefault();
+        document.getElementById("oldpassword").value ='';
+        document.getElementById("newpassword").value='';
+        document.getElementById("confirmpassword").value='';
+
+        document.getElementById("oldPasswordSpan").innerHTML= "";
+        document.getElementById("newPasswordSpan").innerHTML = "";
+        document.getElementById("confirmPasswordSpan").innerHTML= "";
+
+        document.getElementById("username").value='';
+        document.getElementById("name").value='';
+        document.getElementById("email").value='';
+        document.getElementById("department").value='';
+
+        document.getElementById("usernameSpan").innerHTML= "";
+        document.getElementById("nameSpan").innerHTML="";
+        document.getElementById("emailSpan").innerHTML="";
+        document.getElementById("departmentSpan").innerHTML="";
+
+        alert("Your changes are not saved.");
+    }
+
+    function toggleDarkMode() {
+        const body = document.body;
+        const cardElements = document.querySelectorAll('.card');
+        const toggleButton = document.getElementById('toggle-button');
+
+        body.classList.toggle('dark-mode');
+
+        cardElements.forEach(card => {
+            card.classList.toggle('dark-mode');
+        });
+
+        if (body.classList.contains('dark-mode')) {
+            toggleButton.innerText = 'Toggle Light Mode';
+        } else {
+            toggleButton.innerText = 'Toggle Dark Mode';
+        }
+    }
+    document.getElementById('toggle-button').addEventListener('click', toggleDarkMode);
+
+    function validate_info(event) {
+        event.preventDefault();
+        let isValid = true;
+    
+        // Get form fields and their values
+        const usernameField = document.getElementById("username");
+        const nameField = document.getElementById("name");
+        const emailField = document.getElementById("email");
+        const departmentField = document.getElementById("department");
+    
+        const username = usernameField.value.trim();
+        const name = nameField.value.trim();
+        const email = emailField.value.trim();
+        const department = departmentField.value.trim();
+    
+        // Clear any previous error messages
+        document.getElementById("usernameSpan").innerText = "";
+        document.getElementById("nameSpan").innerText = "";
+        document.getElementById("emailSpan").innerText = "";
+        document.getElementById("departmentSpan").innerText = "";
+    
+        // Username validation
+        if (username === "" || username.length < 3) {
+            document.getElementById("usernameSpan").innerText = "Username must be at least 3 characters long.";
+            isValid = false;
+        }
+    
+        // Name validation
+        if (name === "") {
+            document.getElementById("nameSpan").innerText = "Name cannot be empty.";
+            isValid = false;
+        }
+    
+        // Email validation
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+            document.getElementById("emailSpan").innerText = "Please enter a valid email address.";
+            isValid = false;
+        }
+    
+        // Department validation
+        if (department === "") {
+            document.getElementById("departmentSpan").innerText = "Department cannot be empty.";
+            isValid = false;
+        }
+    
+        // Show confirmation message if form is valid
+        // if (isValid) {
+        //     alert("Your changes are updated.\n\n" +
+        //           Username: ${username}\n +
+        //           Name: ${name}\n +
+        //           Email: ${email}\n +
+        //           Department: ${department});
+        // }
+    }
+    
+    // Reset form with cancel button
+    function reset_Form(event) {
+        event.preventDefault();
+        alert("Your changes are not saved.");
+        document.getElementById("accountform").reset();
+        document.getElementById("passwordform").reset();
+    }
+    
+    </script>
+
+</body>
+</html>

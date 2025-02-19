@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unigram Notifications</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Inline CSS -->
+    <style>
+        body {
+            background: linear-gradient(135deg, rgb(222, 72, 97), black);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; /* Remove default body margin */
+        }
+
+        .container {
+            width: 100%; /* Make the container take full width */
+            height: 100vh; /* Make the container take full height */
+            background: #181818; /* Dark background for the notification box */
+            border-radius: 0; /* Remove border-radius for full box */
+            box-shadow: none; /* Remove shadow */
+            padding: 30px 20px;
+            overflow: hidden; /* Hide overflow */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #b9b4b6;
+            font-weight: 600;
+        }
+
+        .notification-list {
+            max-height: calc(100vh - 140px); /* Adjust height to fit within the container */
+            overflow-y: auto;  /* Enabling vertical scrolling */
+            padding-right: 10px; /* Adding some padding for better UI */
+        }
+
+        .list-group-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            background: #242424; /* Darker background for each notification */
+            margin-bottom: 15px;
+            border-radius: 12px;
+            border: 1px solid #333; /* Dark border */
+            transition: box-shadow 0.2s ease-in-out, background 0.3s;
+            cursor: pointer;
+        }
+
+        .list-group-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            background: #333; /* Slightly lighter on hover */
+        }
+
+        .list-group-item img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid #e1306c;
+        }
+
+        .notification-content {
+            flex-grow: 1;
+            margin-left: 15px;
+            color: #ddd; /* Light text color for dark background */
+        }
+
+        .notification-content strong {
+            font-weight: 600;
+            color: #e1306c;
+        }
+
+        .notification-time {
+            font-size: 0.85em;
+            color: #999;
+        }
+
+        /* Styling the notification buttons */
+        .notification-actions button {
+            margin-left: 10px;
+            border: none;
+            background-color: transparent;
+            color: #e1306c;
+            font-size: 0.85em;
+            cursor: pointer;
+        }
+
+        .notification-actions button:hover {
+            text-decoration: underline;
+        }
+
+        /* Badge Styles for New Notifications */
+        .badge-new {
+            background: linear-gradient(135deg, #f56040, #fcaf45);
+            color: #fff;
+            border-radius: 12px;
+            padding: 3px 8px;
+            font-size: 0.75em;
+        }
+
+        /* Styling the scrollbar */
+        .notification-list::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .notification-list::-webkit-scrollbar-thumb {
+            background: #e1306c;
+            border-radius: 4px;
+        }
+
+        .notification-list::-webkit-scrollbar-thumb:hover {
+            background: #fa7e1e;
+        }
+
+        /* Scroll buttons */
+        .scroll-button {
+            position: fixed;
+            right: 30px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Notification Container -->
+    <div class="container">
+        <h2>Unigram Notifications</h2>
+        <div class="notification-list" id="notificationList">
+        </div>
+        <button class="btn btn-light scroll-button" id="scrollUp">▲</button>
+        <button class="btn btn-light scroll-button" id="scrollDown" style="bottom: 30px;">▼</button>
+    </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Sample notifications data with real images
+        const notifications = [
+            {
+                id: 1,
+                type: 'follow',
+                user: 'john_doe',
+                message: 'started following you.',
+                time: '2 minutes ago',
+                avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
+                isNew: true
+            },
+            {
+                id: 2,
+                type: 'mention',
+                user: 'jane_smith',
+                message: 'mentioned you in a post.',
+                time: '10 minutes ago',
+                avatar: 'https://randomuser.me/api/portraits/women/65.jpg',
+                isNew: false
+            },
+            {
+                id: 3,
+                type: 'comment',
+                user: 'alex_jones',
+                message: 'commented: "Great post!"',
+                time: '1 hour ago',
+                avatar: 'https://randomuser.me/api/portraits/men/85.jpg',
+                isNew: true
+            },
+            {
+                id: 4,
+                type: 'like',
+                user: 'sara_lee',
+                message: 'liked your post.',
+                time: '2 hours ago',
+                avatar: 'https://randomuser.me/api/portraits/women/45.jpg',
+                isNew: false
+            },
+            {
+                id: 5,
+                type: 'follow',
+                user: 'michael_scott',
+                message: 'started following you.',
+                time: '3 hours ago',
+                avatar: 'https://randomuser.me/api/portraits/men/70.jpg',
+                isNew: true
+            },
+            {
+                id: 6,
+                type: 'mention',
+                user: 'pam_beesly',
+                message: 'mentioned you in a post.',
+                time: '5 hours ago',
+                avatar: 'https://randomuser.me/api/portraits/women/20.jpg',
+                isNew: false
+            }
+        ];
+
+        // Function to render notifications
+        function renderNotifications() {
+            const notificationList = document.getElementById('notificationList');
+            notificationList.innerHTML = ''; // Clear any existing notifications
+
+            notifications.forEach(notification => {
+                const notificationItem = document.createElement('div');
+                notificationItem.className = 'list-group-item d-flex justify-content-between align-items-center';
+
+                notificationItem.innerHTML = `
+                    <img src="${notification.avatar}" alt="${notification.user}" class="rounded-circle">
+                    <div class="notification-content">
+                        <strong>${notification.user}</strong> ${notification.message}
+                        <div class="notification-time">${notification.time}</div>
+                    </div>
+                    <div class="notification-actions">
+                        ${notification.isNew ? '<span class="badge-new">New</span>' : ''}
+                        <button onclick="markAsRead(${notification.id})">Mark as Read</button>
+                        <button onclick="removeNotification(${notification.id})">Remove</button>
+                    </div>
+                `;
+
+                notificationList.appendChild(notificationItem);
+            });
+        }
+
+        // Function to mark a notification as read
+        function markAsRead(id) {
+            const notification = notifications.find(n => n.id === id);
+            if (notification) {
+                notification.isNew = false;
+                renderNotifications();
+            }
+        }
+
+        // Function to remove a notification
+        function removeNotification(id) {
+            const index = notifications.findIndex(n => n.id === id);
+            if (index !== -1) {
+                notifications.splice(index, 1);
+                renderNotifications();
+            }
+        }
+
+        // Function to scroll up
+        function scrollUp() {
+            const notificationList = document.getElementById('notificationList');
+            notificationList.scrollBy({ top: -100, behavior: 'smooth' });
+        }
+
+        // Function to scroll down
+        function scrollDown() {
+            const notificationList = document.getElementById('notificationList');
+            notificationList.scrollBy({ top: 100, behavior: 'smooth' });
+        }
+
+        // Event listeners for scroll buttons
+        document.getElementById('scrollUp').addEventListener('click', scrollUp);
+        document.getElementById('scrollDown').addEventListener('click', scrollDown);
+
+        // Call the render function on page load
+        document.addEventListener('DOMContentLoaded', renderNotifications);
+    </script>
+</body>
+</html>
